@@ -32,7 +32,7 @@ public class ApprovalConsoleTest extends BaseTest {
         Assert.assertEquals(actualUrl, expectedUrl, "User Not Redirect To The Approval Console Screen!");
     }
 
-    @Test(testName = "Verify User can select 'Branch' and 'Create' from dropdowns", priority = 2)
+    @Test(testName = "Verify the user searched branch name displayed in the grid", priority = 2)
     public void selectDropDownValues() throws InterruptedException {
         approvalConsolePage.scrollUp();
         Thread.sleep(1000);
@@ -40,7 +40,33 @@ public class ApprovalConsoleTest extends BaseTest {
         approvalConsolePage.setSelectValuesFromModuleDd();
         approvalConsolePage.setSelectValuesFromStatusDd();
 
-        approvalConsolePage.enterSearchBranchName("Colombo 01");
+        approvalConsolePage.enterSearchBranchName("NHF213");
+
+        //Expected Result
+        String expectedSearchResult = "NHF213";
+        //Actual Result
+        String actualSearchResult = approvalConsolePage.getSearchResult();
+        //Compare Results
+        Assert.assertEquals(actualSearchResult, expectedSearchResult, "Search Branch displayed in the grid!");
+    }
+
+    @Test(testName = "Verify the user navigate to the view branch screen", priority = 2)
+    public void approvedBranch() throws InterruptedException{
+        approvalConsolePage.scrollUp();
+        Thread.sleep(1000);
+        approvalConsolePage.clickApprovalConsoleButton();
+        approvalConsolePage.setSelectValuesFromModuleDd();
+        approvalConsolePage.setSelectValuesFromStatusDd();
+        approvalConsolePage.enterSearchBranchName("NHF213");
+
+        approvalConsolePage.clickApproveViewButton();
+
+        //Expected Result
+        String expectedBranchResult = "View Branch";
+        //Actual Result
+        String actualBranchResult = approvalConsolePage.getApprovedConsoleScreenBranchViewScreen();
+        //Compare Results
+        Assert.assertEquals(actualBranchResult, expectedBranchResult, "User navigate to the View Branch Screen!");
 
     }
 

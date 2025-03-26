@@ -23,6 +23,9 @@ public class ApprovalConsolePage extends BaseTest {
     private static final By selectValuesFromModuleDropdown = By.id("mType");
     private static final By selectValuesFromStatusDropdown = By.id("statusId");
     private static final By searchField = By.xpath("//input[@aria-controls='cycle1']");
+    private static final By searchResult = By.xpath("//td[@class='sorting_1']");
+    private static final By viewButton = By.xpath("//i[@class='fa fa-list-alt fa-2x fore-color-cyan icon-blue']");
+    private static final By approveViewBranchDetailsScreen = By.xpath("//h5[@class='title']");
 
 
 
@@ -31,6 +34,18 @@ public class ApprovalConsolePage extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement approvalConsoleBtn = wait.until(ExpectedConditions.elementToBeClickable(approvalConsoleButton));
         approvalConsoleBtn.click();
+    }
+
+    public String getApprovedConsoleScreenBranchViewScreen(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement branchDetailsScreen = wait.until(ExpectedConditions.elementToBeClickable(approveViewBranchDetailsScreen));
+        return branchDetailsScreen.getText();
+    }
+
+    public void clickApproveViewButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement approveViewBtn = wait.until(ExpectedConditions.elementToBeClickable(viewButton));
+        approveViewBtn.click();
     }
 
     public String getApprovalConsoleScreenUrl() {
@@ -61,6 +76,13 @@ public class ApprovalConsolePage extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement searchBoxField = wait.until(ExpectedConditions.elementToBeClickable(searchField));
         searchBoxField.sendKeys(branchName);
+
+    }
+
+    public String getSearchResult(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement searchResultBranch = wait.until(ExpectedConditions.elementToBeClickable(searchResult));
+        return searchResultBranch.getText();
 
     }
 
