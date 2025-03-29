@@ -67,7 +67,27 @@ public class ApprovalConsoleTest extends BaseTest {
         String actualBranchResult = approvalConsolePage.getApprovedConsoleScreenBranchViewScreen();
         //Compare Results
         Assert.assertEquals(actualBranchResult, expectedBranchResult, "User navigate to the View Branch Screen!");
+    }
 
+    @Test(testName = "Verify the user can approve the created branch", priority = 2)
+    public void approveBranch() throws InterruptedException{
+        approvalConsolePage.scrollUp();
+        Thread.sleep(1000);
+        approvalConsolePage.clickApprovalConsoleButton();
+        approvalConsolePage.setSelectValuesFromModuleDd();
+        approvalConsolePage.setSelectValuesFromStatusDd();
+        approvalConsolePage.enterSearchBranchName("BGC765");
+        approvalConsolePage.clickApproveViewButton();
+        approvalConsolePage.enterApprovedComment("Ok");
+        approvalConsolePage.clickApprovedButton();
+
+        //Expected Result
+        String expectedApprovedBranchResult = "×\n" +
+                "Success - Branch Approved Successfully.";
+        //Actual Result
+        String actualBranchResult = approvalConsolePage.getBranchApprovedSuccessMessage();
+        //Compare Results
+        Assert.assertEquals(actualBranchResult, expectedApprovedBranchResult, "Success message not same!");
     }
 
 

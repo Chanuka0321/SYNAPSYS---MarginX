@@ -26,6 +26,9 @@ public class ApprovalConsolePage extends BaseTest {
     private static final By searchResult = By.xpath("//td[@class='sorting_1']");
     private static final By viewButton = By.xpath("//i[@class='fa fa-list-alt fa-2x fore-color-cyan icon-blue']");
     private static final By approveViewBranchDetailsScreen = By.xpath("//h5[@class='title']");
+    private static final By approveComment = By.id("approvedComment");
+    private static final By approvedButton = By.xpath("//input[@value='Approve']");
+    private static final By approvedBranchSuccessMessage1 = By.xpath("//div[@class='alert alert-success']");
 
 
 
@@ -46,6 +49,12 @@ public class ApprovalConsolePage extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement approveViewBtn = wait.until(ExpectedConditions.elementToBeClickable(viewButton));
         approveViewBtn.click();
+    }
+
+    public void clickApprovedButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement approvedBtn = wait.until(ExpectedConditions.elementToBeClickable(approvedButton));
+        approvedBtn.click();
     }
 
     public String getApprovalConsoleScreenUrl() {
@@ -76,18 +85,25 @@ public class ApprovalConsolePage extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement searchBoxField = wait.until(ExpectedConditions.elementToBeClickable(searchField));
         searchBoxField.sendKeys(branchName);
-
     }
 
     public String getSearchResult(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement searchResultBranch = wait.until(ExpectedConditions.elementToBeClickable(searchResult));
         return searchResultBranch.getText();
-
     }
 
+    public void enterApprovedComment(String comment){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement approvedcomment = wait.until(ExpectedConditions.visibilityOfElementLocated(approveComment));
+        approvedcomment.sendKeys(comment);
+    }
 
-
+    public String getBranchApprovedSuccessMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement approvedBranchSuccessMessage = wait.until(ExpectedConditions.elementToBeClickable(approvedBranchSuccessMessage1));
+        return approvedBranchSuccessMessage.getText();
+    }
 
 
 
