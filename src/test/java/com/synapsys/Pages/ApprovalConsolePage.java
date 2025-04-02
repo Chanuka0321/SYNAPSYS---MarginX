@@ -31,7 +31,6 @@ public class ApprovalConsolePage extends BaseTest {
     private static final By approvedBranchSuccessMessage1 = By.xpath("//div[@class='alert alert-success']");
 
 
-
     //Actions
     public void clickApprovalConsoleButton(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
