@@ -183,8 +183,4 @@ public class CustomerPage extends BaseTest {
     }
 
 
-
-
-
-
 }

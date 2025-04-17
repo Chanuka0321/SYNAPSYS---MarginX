@@ -69,9 +69,6 @@ public class CustomerTest extends BaseTest {
         customerPage.enterEmail("nayanajith.mandawela@gmail.com");
         customerPage.clickNEXTButton();
 
-
-
     }
-
 
 }

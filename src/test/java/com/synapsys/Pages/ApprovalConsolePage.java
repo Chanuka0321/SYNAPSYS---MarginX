@@ -104,6 +104,19 @@ public class ApprovalConsolePage extends BaseTest {
         return approvedBranchSuccessMessage.getText();
     }
 
+    public void setSelectValuesFromModuleDd1(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement valuesModuleBtn = wait.until(ExpectedConditions.elementToBeClickable(selectValuesFromModuleDropdown));
+        Select moduleSelect = new Select(valuesModuleBtn);
+        moduleSelect.selectByVisibleText("Brokers");
+    }
+
+    public void enterSearchBroker(String brokername){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement searchBoxField = wait.until(ExpectedConditions.elementToBeClickable(searchField));
+        searchBoxField.sendKeys(brokername);
+    }
+
 
 
 

@@ -90,5 +90,17 @@ public class ApprovalConsoleTest extends BaseTest {
         Assert.assertEquals(actualBranchResult, expectedApprovedBranchResult, "Success message not same!");
     }
 
+    @Test(testName = "Verify the user can approve the created broker", priority = 2)
+    public void approveBroker() throws InterruptedException{
+        approvalConsolePage.scrollUp();
+        Thread.sleep(1000);
+        approvalConsolePage.clickApprovalConsoleButton();
+        approvalConsolePage.setSelectValuesFromModuleDd1();
+        approvalConsolePage.setSelectValuesFromStatusDd();
+        approvalConsolePage.enterSearchBroker("Kaveesha");
+        approvalConsolePage.clickApproveViewButton();
+        approvalConsolePage.enterApprovedComment("Ok");
+    }
+
 
 }
