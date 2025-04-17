@@ -97,9 +97,18 @@ public class ApprovalConsoleTest extends BaseTest {
         approvalConsolePage.clickApprovalConsoleButton();
         approvalConsolePage.setSelectValuesFromModuleDd1();
         approvalConsolePage.setSelectValuesFromStatusDd();
-        approvalConsolePage.enterSearchBroker("Kaveesha");
+        approvalConsolePage.enterSearchBroker("055");
         approvalConsolePage.clickApproveViewButton();
         approvalConsolePage.enterApprovedComment("Ok");
+        approvalConsolePage.clickApprovedButton();
+
+        //Expected Result
+        String expectedApprovedBranchResult = "×\n" +
+                "Success - Stock Broker Approved Successfully.";
+        //Actual Result
+        String actualBranchResult = approvalConsolePage.getBrokerApprovedSuccessMessage();
+        //Compare Results
+        Assert.assertEquals(actualBranchResult, expectedApprovedBranchResult, "Success message not same!");
     }
 
 

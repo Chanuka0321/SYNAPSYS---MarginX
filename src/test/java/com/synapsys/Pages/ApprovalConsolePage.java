@@ -29,6 +29,8 @@ public class ApprovalConsolePage extends BaseTest {
     private static final By approveComment = By.id("approvedComment");
     private static final By approvedButton = By.xpath("//input[@value='Approve']");
     private static final By approvedBranchSuccessMessage1 = By.xpath("//div[@class='alert alert-success']");
+    private static final By approvedBrokerSuccessMessage = By.xpath("//div[@class='alert alert-success']");
+
 
 
     //Actions
@@ -117,8 +119,11 @@ public class ApprovalConsolePage extends BaseTest {
         searchBoxField.sendKeys(brokername);
     }
 
-
-
+    public String getBrokerApprovedSuccessMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement approvedBrokerSuccessMessage = wait.until(ExpectedConditions.elementToBeClickable(approvedBranchSuccessMessage1));
+        return approvedBrokerSuccessMessage.getText();
+    }
 
 
 
