@@ -43,13 +43,15 @@ public class BaseTest {
             e.printStackTrace();
         }
     }
-
+/*
     @AfterMethod
     public void teardown(){
         if (driver!=null){
             driver.quit();
         }
     }
+
+ */
 
 
 
