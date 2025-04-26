@@ -30,6 +30,7 @@ public class ApprovalConsolePage extends BaseTest {
     private static final By approvedButton = By.xpath("//input[@value='Approve']");
     private static final By approvedBranchSuccessMessage1 = By.xpath("//div[@class='alert alert-success']");
     private static final By approvedBrokerSuccessMessage = By.xpath("//div[@class='alert alert-success']");
+    private static final By approvedInvestmentAdvisorSuccessMessage = By.xpath("//div[@class='alert alert-success']");
 
 
 
@@ -121,10 +122,28 @@ public class ApprovalConsolePage extends BaseTest {
 
     public String getBrokerApprovedSuccessMessage(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement approvedBrokerSuccessMessage = wait.until(ExpectedConditions.elementToBeClickable(approvedBranchSuccessMessage1));
-        return approvedBrokerSuccessMessage.getText();
+        WebElement approvedBrokerSuccessMessage1 = wait.until(ExpectedConditions.elementToBeClickable(approvedBrokerSuccessMessage));
+        return approvedBrokerSuccessMessage1.getText();
     }
 
+    public void setSelectAdvisorFromModuleDd(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement valuesModuleBtn = wait.until(ExpectedConditions.elementToBeClickable(selectValuesFromModuleDropdown));
+        Select moduleSelect = new Select(valuesModuleBtn);
+        moduleSelect.selectByVisibleText("Investment Advisors");
+    }
+
+    public void enterSearchInvestmentAdvisor(String investmentAdvisorCode){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement searchBoxField = wait.until(ExpectedConditions.elementToBeClickable(searchField));
+        searchBoxField.sendKeys(investmentAdvisorCode);
+    }
+
+    public String getInvestmentAdvisorApprovedSuccessMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement approvedAdvisorSuccessMessage1 = wait.until(ExpectedConditions.elementToBeClickable(approvedInvestmentAdvisorSuccessMessage));
+        return approvedAdvisorSuccessMessage1.getText();
+    }
 
 
 

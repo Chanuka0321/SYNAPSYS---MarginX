@@ -18,7 +18,7 @@ public class InvestmentAdvisorTest extends BaseTest {
     }
 
     @Test(testName = "Verify tha user can redirect to the investment advisor screen", priority = 2)
-    public void redirectToTheInvestmentAdvisorScreen() throws InterruptedException{
+    public void redirectToTheInvestmentAdvisorScreen() {
         investmentAdvisorPage.clickMasterdataBtn();
         investmentAdvisorPage.clickInvestmentAdvisorBtn();
 
@@ -28,9 +28,26 @@ public class InvestmentAdvisorTest extends BaseTest {
         String actualUrl = investmentAdvisorPage.getInvestmentAdvisorHomeScreenUrl();
         //Compare Actual Result and Expected Result
         Assert.assertEquals(actualUrl, expectedUrl,"User Not Redirect To The Investment Advisor Home Screen!");
-
     }
 
+    @Test(testName = "Verify the user can create a new investment advisor", priority = 2)
+    public void createNewInvestmentAdvisor() throws InterruptedException{
+        investmentAdvisorPage.clickMasterdataBtn();
+        investmentAdvisorPage.clickInvestmentAdvisorBtn();
+        investmentAdvisorPage.clickCREATEINVESTMENTADVISORBtn();
+        investmentAdvisorPage.selectStockBrokerDropdown();
+        investmentAdvisorPage.enterAdvisorCode("HDB49");
+        investmentAdvisorPage.enterAdvisorName("Chamini Vidanagamage");
+        investmentAdvisorPage.enterContactNumber("0761832549");
+        investmentAdvisorPage.enterEmail("chamini.vidanagamage@gmail.com");
+        investmentAdvisorPage.clickSAVEButton();
 
-
+        //Expected  Result
+        String expectedInvestmentAdvisorSuccessMsg = "×\n" +
+                "Success - Investment Advisor Created Successfully.";
+        //Actual Result
+        String actualInvestmentAdvisorSuccessMessage = investmentAdvisorPage.getInvestmentAdvisorCreateSuccessMessage();
+        //Compare
+        Assert.assertEquals(actualInvestmentAdvisorSuccessMessage, expectedInvestmentAdvisorSuccessMsg, "Success Message Not match!");
+    }
 }

@@ -111,5 +111,26 @@ public class ApprovalConsoleTest extends BaseTest {
         Assert.assertEquals(actualBranchResult, expectedApprovedBranchResult, "Success message not same!");
     }
 
+    @Test(testName = "Verify the user can approve the created investment advisors", priority = 2)
+    public void approveInvestmentAdvisor() throws InterruptedException{
+        approvalConsolePage.scrollUp();
+        Thread.sleep(1000);
+        approvalConsolePage.clickApprovalConsoleButton();
+        approvalConsolePage.setSelectAdvisorFromModuleDd();
+        approvalConsolePage.setSelectValuesFromStatusDd();
+        approvalConsolePage.enterSearchInvestmentAdvisor("HDB49");
+        approvalConsolePage.clickApproveViewButton();
+        approvalConsolePage.enterApprovedComment("Ok");
+        approvalConsolePage.clickApprovedButton();
+
+        //Expected Result
+        String expectedApprovedAdvisorResult = "×\n" +
+                "Success - Investment Advisor Approved Successfully.";
+        //Actual Result
+        String actualAdvisorResult = approvalConsolePage.getInvestmentAdvisorApprovedSuccessMessage();
+        //Compare Results
+        Assert.assertEquals(actualAdvisorResult, expectedApprovedAdvisorResult, "Success message not same!");
+    }
+
 
 }
