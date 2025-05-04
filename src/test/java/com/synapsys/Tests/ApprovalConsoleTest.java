@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 public class ApprovalConsoleTest extends BaseTest {
 
     private ApprovalConsolePage approvalConsolePage;
-    private BranchPage branchPage;
 
     @BeforeMethod
     public void setupLoginTest() throws InterruptedException{

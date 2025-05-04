@@ -1,5 +1,4 @@
 package com.synapsys.Tests;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.synapsys.Base.BaseTest;
 import com.synapsys.Pages.LoginPage;

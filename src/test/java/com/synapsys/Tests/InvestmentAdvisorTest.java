@@ -36,10 +36,10 @@ public class InvestmentAdvisorTest extends BaseTest {
         investmentAdvisorPage.clickInvestmentAdvisorBtn();
         investmentAdvisorPage.clickCREATEINVESTMENTADVISORBtn();
         investmentAdvisorPage.selectStockBrokerDropdown();
-        investmentAdvisorPage.enterAdvisorCode("HDB49");
-        investmentAdvisorPage.enterAdvisorName("Chamini Vidanagamage");
-        investmentAdvisorPage.enterContactNumber("0761832549");
-        investmentAdvisorPage.enterEmail("chamini.vidanagamage@gmail.com");
+        investmentAdvisorPage.enterAdvisorCode("GHDT72");
+        investmentAdvisorPage.enterAdvisorName("Dilmini Athapaththu");
+        investmentAdvisorPage.enterContactNumber("0756332549");
+        investmentAdvisorPage.enterEmail("dilminiathapaththu@gmail.com");
         investmentAdvisorPage.clickSAVEButton();
 
         //Expected  Result
