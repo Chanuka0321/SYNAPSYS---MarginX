@@ -29,7 +29,7 @@ public class ManualCDSLodgmentsPage extends BaseTest {
     private static final By additionTypeDropDown = By.id("buySellTypeId");
     private static final By quantityField = By.id("quantity");
     private static final By addButton = By.id("add");
-
+    private static final By validationSuccessMsg = By.xpath("//div[@class='alert alert-success']");
 
     //Actions
     public void clickProcessButton() {
@@ -89,6 +89,21 @@ public class ManualCDSLodgmentsPage extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement addBtn = wait.until(ExpectedConditions.elementToBeClickable(addButton));
         addBtn.click();
+    }
+
+    public void clickVALIDATEButton() {
+        WebElement validateButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='btn btn-success']")));
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(validateButton)).click();
+
+    }
+
+    public String getValidateSuccessMessage1(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement successMsgElement = wait.until(ExpectedConditions.elementToBeClickable(validationSuccessMsg));
+        return successMsgElement .getText();
     }
 
 
