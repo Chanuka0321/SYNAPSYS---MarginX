@@ -2,6 +2,7 @@ package com.synapsys.Tests;
 
 import com.synapsys.Base.BaseTest;
 import com.synapsys.Pages.FileUploadPage;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -59,6 +60,13 @@ public class FileUploadTest extends BaseTest {
         Thread.sleep(200);
         fileUploadPage.clickValidateButton();
         fileUploadPage.clickValidateButton2();
+
+        //Expected  Result
+        String expectedSuccessMessage = "Success - Successfully Validated.";
+        //Actual Result
+        String actualSuccessMessage = fileUploadPage.getSuccessMessage();
+        //Compare
+        Assert.assertEquals(actualSuccessMessage, expectedSuccessMessage, "Success Message Not match!");
     }
 
     @Test(testName = "Verify the user can validate the uploaded Daily Transaction File", priority = 3)
@@ -69,6 +77,14 @@ public class FileUploadTest extends BaseTest {
         Thread.sleep(200);
         fileUploadPage.clickValidateButton();
         fileUploadPage.clickValidateButton2();
+
+        //Expected  Result
+        String expectedSuccessMessage = "×\n" +
+                "Success - Successfully Validated.";
+        //Actual Result
+        String actualSuccessMessage = fileUploadPage.getSuccessMessage();
+        //Compare
+        Assert.assertEquals(actualSuccessMessage, expectedSuccessMessage, "Success Message Not match!");
     }
 
     @Test(testName = "Verify the user can validate the uploaded Market Price File", priority = 3)
@@ -79,6 +95,14 @@ public class FileUploadTest extends BaseTest {
         Thread.sleep(200);
         fileUploadPage.clickValidateButton();
         fileUploadPage.clickValidateButton2();
+
+        //Expected  Result
+        String expectedSuccessMessage = "×\n" +
+                "Success - Successfully Validated.";
+        //Actual Result
+        String actualSuccessMessage = fileUploadPage.getSuccessMessage();
+        //Compare
+        Assert.assertEquals(actualSuccessMessage, expectedSuccessMessage, "Success Message Not match!");
     }
 
 }

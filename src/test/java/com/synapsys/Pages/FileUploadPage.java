@@ -31,6 +31,8 @@ public class FileUploadPage extends BaseTest {
     private static final By fileUploadFileTypeDropDown = By.id("fileType");
     private static final By validateButton = By.xpath("//i[@class=\"fa fa-list-alt fa-2x fore-color-cyan icon-blue\"]");
     private static final By validateButton2 = By.xpath("//button[@class=\"btn btn-info pull-right\"]");
+    private static final By successMessage = By.xpath("//div[@class='alert alert-success']");
+
 
 
     //Actions
@@ -154,6 +156,12 @@ public class FileUploadPage extends BaseTest {
         WebElement validationFileTypeSelect = wait.until(ExpectedConditions.elementToBeClickable(fileUploadFileTypeDropDown));
         Select fileTypeSelect = new Select(validationFileTypeSelect);
         fileTypeSelect.selectByVisibleText(" Market Price Upload ");
+    }
+
+    public String getSuccessMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement successMsgElement = wait.until(ExpectedConditions.elementToBeClickable(successMessage));
+        return successMsgElement .getText();
     }
 
 
